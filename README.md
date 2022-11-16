@@ -7,4 +7,4 @@ Ca si dificultate - nu prea am experienta in Java si nu stiu sa evaluez-, pentru
 
 Ca si layout: pagina de prezentare, cu poze si texte descriptive, posibilitate de a verifica disponibilitate pentru o anumita perioada si extra, daca reusesc  - un spatiu dedicat pentru cererile de rezervare/comunicare.
 
-Multumesc si bafta!
+Multumesc si tine-ti-va pumnii pentru mine!
