@@ -1,4 +1,4 @@
-# Saciova-web-project
+# Proiect personal // Saciova-booking-project
 Presentation site for soul &amp; body recharge and accommodation possibilities at Saciova
 
 Mi-am propus realizarea unui site de prezentare pentru un imobil inchiriabil pe termen scurt pe cei care doresc sa isi reincarce bateriile intr-o zona rurala foarte retrasa, intima, printre munti si paduri.
