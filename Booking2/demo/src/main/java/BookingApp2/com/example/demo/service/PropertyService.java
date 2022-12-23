@@ -2,6 +2,7 @@ package BookingApp2.com.example.demo.service;
 
 import BookingApp2.com.example.demo.entities.Tables;
 import BookingApp2.com.example.demo.entities.tables.pojos.Property;
+import BookingApp2.com.example.demo.repository.CrudOperations;
 import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,13 +10,40 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class PropertyService {
+public class PropertyService implements CrudOperations<Property> {
 
     @Autowired
     DSLContext context;
 
-    public int saveProperty(Property property) {
-        return context.insertInto(Tables.PROPERTY).values(
+    @Override
+    public int add(Property property) {
+        return context.insertInto(Tables.PROPERTY,
+                Tables.PROPERTY.GUESTNUMBER,
+                Tables.PROPERTY.RATING,
+                Tables.PROPERTY.DIMENSION,
+                Tables.PROPERTY.PRICE,
+                Tables.PROPERTY.NAME,
+                Tables.PROPERTY.COUNTRY,
+                Tables.PROPERTY.COUNTY,
+                Tables.PROPERTY.CITY,
+                Tables.PROPERTY.TYPE,
+                Tables.PROPERTY.BEDROOM,
+                Tables.PROPERTY.BATHROOM,
+                Tables.PROPERTY.LIVINGROOM,
+                Tables.PROPERTY.BALCONY,
+                Tables.PROPERTY.TERRACE,
+                Tables.PROPERTY.PICTURE,
+                Tables.PROPERTY.DESCRIPTION,
+                Tables.PROPERTY.WIFI,
+                Tables.PROPERTY.PARKING,
+                Tables.PROPERTY.CHILDFRIENDLY,
+                Tables.PROPERTY.PETFRIENDLY,
+                Tables.PROPERTY.SAUNA,
+                Tables.PROPERTY.SPA,
+                Tables.PROPERTY.SMOKING,
+                Tables.PROPERTY.BAR,
+                Tables.PROPERTY.AIRPORTTRANSFER,
+                Tables.PROPERTY.AVAILABILITY).values(
                 property.getGuestnumber(),
                 property.getRating(),
                 property.getDimension(),
@@ -41,18 +69,28 @@ public class PropertyService {
                 property.getSmoking(),
                 property.getBar(),
                 property.getAirporttransfer(),
-                property.getAvailability()).returning().execute();
+                property.getAvailability())
+                .returning()
+                .execute();
     }
 
-    public List<Property> getProperties() {
+    @Override
+    public List<Property> findAll() {
         return context.select().from(Tables.PROPERTY).fetchInto(Property.class);
     }
 
-    public int deleteProperty(int id) {
+    @Override
+    public Property findById(int id) {
+        return context.select().from(Tables.PROPERTY).where(Tables.PROPERTY.PROPERTYID.eq(id)).fetchInto(Property.class).get(0);
+    }
+
+    @Override
+    public int deleteById(int id) {
         return context.delete(Tables.PROPERTY).where(Tables.PROPERTY.PROPERTYID.eq(id)).execute();
     }
 
-    public int updateProperty(Property property) {
+    @Override
+    public int update(Property property) {
         return context.update(Tables.PROPERTY)
                 .set(Tables.PROPERTY.GUESTNUMBER, property.getGuestnumber())
                 .set(Tables.PROPERTY.RATING, property.getRating())
@@ -82,7 +120,5 @@ public class PropertyService {
                 .set(Tables.PROPERTY.AVAILABILITY, property.getAvailability())
                 .where(Tables.PROPERTY.PROPERTYID.eq(property.getPropertyid())).execute();
     }
-
-
 
 }

@@ -1,0 +1,48 @@
+http://localhost:8080/property/add
+
+{
+    "guestnumber": 10,
+    "rating": 5,
+    "price": 100,
+    "dimension" : 120,
+    "name": "Brasov-house",
+    "country": "Romania",
+    "county": "BV",
+    "city": "Brasov",
+    "type": "House",
+    "kitchen": "kitchen",
+    "bedroom": "bedroom",
+    "bathroom": "bathroom",
+    "livingroom": "living room",
+    "balcony": "small balcony",
+    "terrace": "terrace",
+    "picture": "propertyPicture",
+    "description": "propertyDescription",
+    "wifi": true,
+    "parking": true,
+    "childfriendly": true,
+    "petfriendly": true,
+    "sauna": true,
+    "spa": true,
+    "smoking": false,
+    "bar": false,
+    "airporttransfer": false,
+    "availability": true
+}
+
+http://localhost:8080/property/all
+http://localhost:8080/property/find/1
+http://localhost:8080/property/update
+http://localhost:8080/property/delete/1
+
+http://localhost:8080/review/add
+{
+    "country": "Hungary",
+    "description": "nice",
+    "icon": ":)",
+    "username": "Ana"
+}
+
+//La restul trebuia sa mai lucrez la cod
+
+

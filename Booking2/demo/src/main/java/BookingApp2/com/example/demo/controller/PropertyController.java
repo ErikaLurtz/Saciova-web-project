@@ -3,10 +3,7 @@ package BookingApp2.com.example.demo.controller;
 import BookingApp2.com.example.demo.entities.tables.pojos.Property;
 import BookingApp2.com.example.demo.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,32 +17,27 @@ public class PropertyController {
 
     @GetMapping("/all")
     public List<Property> getAllProperties() {
-       return propertyService.getProperties();
+       return propertyService.findAll();
     }
 
-//    @PostMapping("/add")
-//    public Property addProperty(@RequestBody Property property) {
-//        Property newProperty = propertyService.addProperty(property);
-//        return new ResponseEntity<>(newProperty, HttpStatus.OK);
-//    }
-//
-//
-//    @PutMapping("/update")
-//    public ResponseEntity<Property> updateProperty(@RequestBody Property property) {
-//        Property updateProperty = propertyService.updateProperty(property);
-//        return new ResponseEntity<>(updateProperty, HttpStatus.OK);
-//    }
-//
-//    @DeleteMapping("/delete/{id}")
-//    public ResponseEntity<?> deleteProperty(@PathVariable("id") Long id) {
-//        propertyService.deleteProperty(id);
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
-//
-//    @GetMapping("/find/{id}")
-//    public ResponseEntity<Property> getPropertyById(@PathVariable("id") Long id) {
-//        Property newProperty = propertyService.findPropertyById(id);
-//        return new ResponseEntity<>(newProperty, HttpStatus.OK);
-//    }
+    @PostMapping("/add")
+    public int addProperty(@RequestBody Property property) {
+        return propertyService.add(property);
+    }
+
+    @PutMapping("/update")
+    public int updateProperty(@RequestBody Property property) {
+        return propertyService.update(property);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public int deleteProperty(@PathVariable int id) {
+        return propertyService.deleteById(id);
+    }
+
+    @GetMapping("/find/{id}")
+    public Property getPropertyById(@PathVariable int id) {
+        return propertyService.findById(id);
+    }
 
 }
